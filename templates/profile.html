@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Tailwind CSS CDN link -->
+</head>
+<body class="bg-gray-100">
+    <div class="flex justify-center items-center h-screen">
+        <div class="bg-white p-8 shadow-md rounded-lg w-96">
+            <div class="flex flex-col items-center mb-6">
+                <img class="w-32 h-32 mx-auto rounded-full shadow-lg" src="{{ staff.profile_image.url }}" alt="Profile Image">
+                <p class="text-xl font-semibold text-gray-800 mt-2">{{ staff.staff.get_full_name }}</p>
+                <p class="text-gray-600">{{ staff.department.name }}</p>
+            </div>
+            <div class="text-center">
+                <h2 class="text-2xl font-semibold text-indigo-600">{{ staff.staff.staff_type }}</h2>
+                <p class="text-lg text-gray-800">{{ staff.department.college }}</p>
+                <p class="text-gray-600">{{ staff.staff.username }}</p>
+                <p class="text-gray-600">{{ staff.staff.email }}</p>
+                <div class="mt-6 space-y-4">
+                    <a href="{% url 'update-profile' %}" class="block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300">Edit Profile</a>
+                    <a href="#" class="block px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300">Apply for Leave</a>
+                    <a href="#" class="block px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition duration-300">See Applications</a>
+                    {% if staff.staff_type.lower == 'hod' or staff.staff_type.lower == 'principal' %}
+                        <a href="#" class="block px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition duration-300">View Leave Requests</a>
+                    {% endif %}
+                    <a href="{% url 'logout' %}" class="block px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

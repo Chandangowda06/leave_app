@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Brindavan Group of Institutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-500 p-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-semibold">
+                Brindavan Group of Institutions
+            </h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4">Edit Profile</h2>
+
+            <form action="/edit-profile/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2" for="profile-image">
+                        Change Profile Image
+                    </label>
+                    <input type="file" id="profile-image" name="profile_image" accept="image/*" class="py-2 px-3 bg-white border rounded w-full">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2" for="password">
+                        Change Password
+                    </label>
+                    <input type="password" id="password" name="password" class="py-2 px-3 bg-white border rounded w-full" placeholder="New Password">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2" for="confirm-password">
+                        Confirm New Password
+                    </label>
+                    <input type="password" id="confirm-password" name="confirm_password" class="py-2 px-3 bg-white border rounded w-full" placeholder="Confirm New Password">
+                </div>
+
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-blue-500 p-4 mt-8">
+        <div class="container mx-auto text-center text-white">
+            &copy; 2023 Brindavan Group of Institutions. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
