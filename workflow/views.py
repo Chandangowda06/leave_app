@@ -4,6 +4,7 @@ from .models import *
 from django.http import Http404
 from django.views.decorators.http import require_POST
 from django.middleware.csrf import get_token
+from django.views.decorators.http import require_POST
 
 
 
@@ -21,6 +22,7 @@ def profile(request):
                 return render(request, 'profile.html', {'staff':staff_profile})
     raise Http404("Page not found")
 
+@require_POST
 def login_view(request):
     csrf_token = get_token(request)
     if request.method == 'POST':
